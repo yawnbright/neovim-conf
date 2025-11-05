@@ -10,35 +10,29 @@
 ---   return "<esc>"
 --- end, { expr = true, desc = "Escape and Clear hlsearch" })
 
-vim.keymap.set({ "i", "n" }, "jk", function()
+vim.keymap.set({ "i" }, "jk", function()
   vim.cmd("noh")
   LazyVim.cmp.actions.snippet_stop()
   return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
 
----
-vim.keymap.set("n", "<C-Left>", "<C-w>h")
-vim.keymap.set("n", "<C-Right>", "<C-w>l")
-vim.keymap.set("n", "<C-Up>", "<C-w>k")
-vim.keymap.set("n", "<C-Down>", "<C-w>j")
+vim.keymap.set({ "n" }, "9", "0")
+vim.keymap.set({ "n" }, "0", "$")
 
-vim.keymap.set("n", "<C-h>", "<C-w>>")
-vim.keymap.set("n", "<C-j>", "<C-w>-")
-vim.keymap.set("n", "<C-k>", "<C-w>+")
-vim.keymap.set("n", "<C-l>", "<C-w><")
+--- buffer尺寸调整
+vim.keymap.set("n", "<C-Left>", "<C-w>>")
+vim.keymap.set("n", "<C-Right>", "<C-w><")
+vim.keymap.set("n", "<C-Up>", "<C-w>-")
+vim.keymap.set("n", "<C-Down>", "<C-w>+")
 
+--- buffer切换
 vim.keymap.set("n", "<S-Left>", "<cmd>bprev<CR>")
 vim.keymap.set("n", "<S-Right>", "<cmd>bnext<CR>")
 
-vim.keymap.set({ "v" }, "<C-c>", "y")
-vim.keymap.set({ "n" }, "<C-c>", "p")
-
+--- 调试
 vim.keymap.set("n", "<F7>", function()
-  -- print("f7")
   require("dap").step_over()
 end, { desc = "Step Over" })
-
 vim.keymap.set("n", "<F8>", function()
-  -- print("f8")
   require("dap").step_into()
 end, { desc = "Step Into" })
