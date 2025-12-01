@@ -16,8 +16,12 @@ vim.keymap.set({ "i" }, "jk", function()
   return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
 
-vim.keymap.set({ "n" }, "9", "0")
+vim.keymap.set({ "n" }, "8", "0")
+vim.keymap.set({ "n" }, "9", "^")
 vim.keymap.set({ "n" }, "0", "$")
+
+vim.keymap.set({ "i" }, "jj", "<esc>^i")
+vim.keymap.set({ "i" }, "kk", "<esc>$a")
 
 --- buffer尺寸调整
 vim.keymap.set("n", "<C-Left>", "<C-w>>")
